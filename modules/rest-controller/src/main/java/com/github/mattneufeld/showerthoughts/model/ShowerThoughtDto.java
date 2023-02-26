@@ -1,4 +1,4 @@
-package com.github.mattneufeld.showerthoughts.rest.model;
+package com.github.mattneufeld.showerthoughts.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;

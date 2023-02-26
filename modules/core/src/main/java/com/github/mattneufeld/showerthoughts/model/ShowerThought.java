@@ -1,4 +1,4 @@
-package com.github.mattneufeld.showerthoughts.core.model;
+package com.github.mattneufeld.showerthoughts.model;
 
 import lombok.Getter;
 import lombok.Setter;

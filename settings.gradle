@@ -2,6 +2,8 @@ rootProject.name = 'shower-thoughts'
 
 include 'core'
 include 'rest-controller'
+include 'shower-thought-provider'
 
 project(':core').projectDir = new File('modules/core')
 project(':rest-controller').projectDir = new File('modules/rest-controller')
+project(':shower-thought-provider').projectDir = new File('modules/shower-thought-provider')
