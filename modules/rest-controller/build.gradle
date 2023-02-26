@@ -1,0 +1,19 @@
+dependencies {
+    //Modules
+    implementation project(":core")
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // Spring
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.0.0'
+
+    // other other stuff
+    implementation 'org.mapstruct:mapstruct:1.5.0.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.0.Final'
+
+
+    // Other stuff
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
