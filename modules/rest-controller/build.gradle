@@ -8,13 +8,12 @@ dependencies {
     // Spring
     implementation 'org.springframework.boot:spring-boot-starter-web:3.0.0'
 
-    // other other stuff
-    implementation 'org.mapstruct:mapstruct:1.5.0.Final'
-    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.0.Final'
-
-
     // Other stuff
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.projectlombok:lombok-mapstruct-binding:0.1.0'
+
+    // other other stuff
+    implementation 'org.mapstruct:mapstruct:1.5.0.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.0.Final'
 }

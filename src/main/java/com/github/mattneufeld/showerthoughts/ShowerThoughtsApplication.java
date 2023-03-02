@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ShowerThoughtsApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(ShowerThoughtsApplication.class, args);
     }
 }
