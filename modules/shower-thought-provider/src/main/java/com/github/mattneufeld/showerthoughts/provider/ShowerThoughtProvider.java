@@ -23,6 +23,9 @@ public class ShowerThoughtProvider implements ShowerThoughtGateway {
      */
     @Override
     public ShowerThought createShowerThought(ShowerThought thought) {
+        while (BIG_DATA_BASE.containsKey(currentId)) {
+            currentId++;
+        }
         thought.setId(currentId);
         BIG_DATA_BASE.put(currentId++, thought.getThought());
         return thought;
@@ -52,18 +55,12 @@ public class ShowerThoughtProvider implements ShowerThoughtGateway {
      * @param id This is the ID of the shower thought to be updated.
      * @param thought This is the shower thought to be updated to.
      * @return This is the shower thought that was added at the specified location.
-     * @throws NotFoundException This exception indicates that the requested shower though id doesn't exist.
      */
     @Override
-    public ShowerThought updateShowerThought(Long id, ShowerThought thought) throws NotFoundException {
-
-        if (!BIG_DATA_BASE.containsKey(id)) {
-            throw new NotFoundException("ID to update does not exist.");
-        }
+    public ShowerThought updateShowerThought(Long id, ShowerThought thought){
 
         BIG_DATA_BASE.put(id, thought.getThought());
         thought.setId(id);
-
         return thought;
     }
 

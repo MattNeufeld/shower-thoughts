@@ -12,7 +12,7 @@ public interface ShowerThoughtGateway {
 
     ShowerThought createShowerThought(ShowerThought thought);
     ShowerThought readShowerThought(Long id) throws NotFoundException;
-    ShowerThought updateShowerThought(Long id, ShowerThought thought) throws NotFoundException;
+    ShowerThought updateShowerThought(Long id, ShowerThought thought);
     ShowerThought deleteShowerThought(Long id) throws NotFoundException;
     List<ShowerThought> readAllShowerThought();
 }

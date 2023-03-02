@@ -99,12 +99,7 @@ public class ShowerThoughtController {
     @ResponseStatus(HttpStatus.OK)
     public List<ShowerThoughtDto> getAllShowerThought() {
         List<ShowerThought> thoughts = getAllShowerThoughtUseCase.execute();
-        List<ShowerThoughtDto> outputThoughts = new ArrayList<>();
-        for (ShowerThought t : thoughts) {
-            outputThoughts.add(ShowerThoughtMapper.INSTANCE.toDTO(t));
-        }
-
-        return outputThoughts;
+        return ShowerThoughtMapper.INSTANCE.toDTOList(thoughts);
     }
 
 }

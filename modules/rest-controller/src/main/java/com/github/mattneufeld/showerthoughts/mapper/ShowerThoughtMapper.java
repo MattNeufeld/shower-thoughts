@@ -6,6 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface ShowerThoughtMapper {
     ShowerThoughtMapper INSTANCE = Mappers.getMapper(ShowerThoughtMapper.class);
@@ -24,5 +26,7 @@ public interface ShowerThoughtMapper {
      */
     @Mapping(target = "id", ignore = true)
     ShowerThought fromDTO(ShowerThoughtDto showerThoughtDto);
+
+    List<ShowerThoughtDto> toDTOList(List<ShowerThought> showerThoughts);
 
 }
