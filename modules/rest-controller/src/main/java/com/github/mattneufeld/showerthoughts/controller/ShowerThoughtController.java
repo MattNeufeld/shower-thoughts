@@ -8,39 +8,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/showerthought")
 public class ShowerThoughtController {
 
-    private final GetShowerThoughtUseCase getShowerThoughtUseCase;
+    private final ReadShowerThoughtUseCase readShowerThoughtUseCase;
     private final CreateShowerThoughtUseCase createShowerThoughtUseCase;
     private final UpdateShowerThoughtUseCase updateShowerThoughtUseCase;
     private final DeleteShowerThoughtUseCase deleteShowerThoughtUseCase;
 
-    private final GetAllShowerThoughtUseCase getAllShowerThoughtUseCase;
+    private final ReadAllShowerThoughtUseCase readAllShowerThoughtUseCase;
 
     /**
      * This is the constructor for the shower thought rest controller.
-     * @param getShowerThoughtUseCase This is use case for getting a shower thought from the database.
-     * @param createShowerThoughtUseCase This is use case for adding a shower thought to the database.
-     * @param deleteShowerThoughtUseCase This is use case for deleting a shower thought from the database.
-     * @param updateShowerThoughtUseCase This is use case for updating a shower thought within the database.
+     * @param readShowerThoughtUseCase This is the use case for reading a shower thought from the database.
+     * @param createShowerThoughtUseCase This is the use case for adding a shower thought to the database.
+     * @param deleteShowerThoughtUseCase This is the use case for deleting a shower thought from the database.
+     * @param updateShowerThoughtUseCase This is the use case for updating a shower thought within the database.
+     * @param readAllShowerThoughtUseCase This is the use case for reading all the shower thoughts from the database.
      */
     @Autowired
     public ShowerThoughtController(
-            GetShowerThoughtUseCase getShowerThoughtUseCase,
+            ReadShowerThoughtUseCase readShowerThoughtUseCase,
             CreateShowerThoughtUseCase createShowerThoughtUseCase,
             DeleteShowerThoughtUseCase deleteShowerThoughtUseCase,
             UpdateShowerThoughtUseCase updateShowerThoughtUseCase,
-            GetAllShowerThoughtUseCase getAllShowerThoughtUseCase) {
-        this.getShowerThoughtUseCase = getShowerThoughtUseCase;
+            ReadAllShowerThoughtUseCase readAllShowerThoughtUseCase) {
+        this.readShowerThoughtUseCase = readShowerThoughtUseCase;
         this.createShowerThoughtUseCase = createShowerThoughtUseCase;
         this.updateShowerThoughtUseCase = updateShowerThoughtUseCase;
         this.deleteShowerThoughtUseCase = deleteShowerThoughtUseCase;
-        this.getAllShowerThoughtUseCase = getAllShowerThoughtUseCase;
+        this.readAllShowerThoughtUseCase = readAllShowerThoughtUseCase;
     }
 
     /**
@@ -50,8 +50,8 @@ public class ShowerThoughtController {
      */
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ShowerThoughtDto getShowerThought(@PathVariable Long id) {
-        ShowerThought thought = getShowerThoughtUseCase.execute(id);
+    public ShowerThoughtDto readShowerThought(@PathVariable Long id) {
+        ShowerThought thought = readShowerThoughtUseCase.execute(id);
         return ShowerThoughtMapper.INSTANCE.toDTO(thought);
     }
 
@@ -95,10 +95,14 @@ public class ShowerThoughtController {
         return ShowerThoughtMapper.INSTANCE.toDTO(thought);
     }
 
+    /**
+     * This method reads all the shower thoughts currently in the database.
+     * @return A list of all the shower thoughts in the database
+     */
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<ShowerThoughtDto> getAllShowerThought() {
-        List<ShowerThought> thoughts = getAllShowerThoughtUseCase.execute();
+    public List<ShowerThoughtDto> readAllShowerThought() {
+        List<ShowerThought> thoughts = readAllShowerThoughtUseCase.execute();
         return ShowerThoughtMapper.INSTANCE.toDTOList(thoughts);
     }
 

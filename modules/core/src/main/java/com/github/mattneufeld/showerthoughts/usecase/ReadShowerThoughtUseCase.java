@@ -6,21 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetShowerThoughtUseCase {
+public class ReadShowerThoughtUseCase {
 
     private final ShowerThoughtGateway GATEWAY;
 
     /**
-     * This is the constructor for the GetShowerThought use case.
+     * This is the constructor for the ReadShowerThought use case.
      * @param gateway This is the implementation of the ShowerThoughtGateway interface to be provided by Spring Boot.
      */
     @Autowired
-    public GetShowerThoughtUseCase(ShowerThoughtGateway gateway){
+    public ReadShowerThoughtUseCase(ShowerThoughtGateway gateway){
         this.GATEWAY = gateway;
     }
 
     /**
-     * This method calls the implementation of getShowerThought defined by the gateway.
+     * This method calls the implementation of readShowerThought defined by the gateway.
      * @param id The ID of the shower thought to be returned.
      * @return The shower thought at the requested ID.
      */

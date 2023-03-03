@@ -27,6 +27,12 @@ public interface ShowerThoughtMapper {
     @Mapping(target = "id", ignore = true)
     ShowerThought fromDTO(ShowerThoughtDto showerThoughtDto);
 
+    /**
+     * This method allows for conversions from a list of core shower thought objects to a list of outward
+     * facing shower thought objects.
+     * @param showerThoughts The list of core shower thought objects to be translated.
+     * @return The list of created ShowerThoughtDto objects.
+     */
     List<ShowerThoughtDto> toDTOList(List<ShowerThought> showerThoughts);
 
 }

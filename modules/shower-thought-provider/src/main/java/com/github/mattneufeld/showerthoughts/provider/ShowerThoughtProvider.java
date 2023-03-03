@@ -51,7 +51,7 @@ public class ShowerThoughtProvider implements ShowerThoughtGateway {
     }
 
     /**
-     * This method is the implementation to update the shower thought at a specific ID
+     * This method is the implementation to update the shower thought at a specific ID.
      * @param id This is the ID of the shower thought to be updated.
      * @param thought This is the shower thought to be updated to.
      * @return This is the shower thought that was added at the specified location.
@@ -65,10 +65,10 @@ public class ShowerThoughtProvider implements ShowerThoughtGateway {
     }
 
     /**
-     *
-     * @param id
-     * @return
-     * @throws NotFoundException This exception indicates that the requested shower though id doesn't exist.
+     * This method is the implementation to delete the shower thought at a specific ID.
+     * @param id This is the ID of the shower thought to be deleted
+     * @return This is the shower thought that was deleted.
+     * @throws NotFoundException This exception indicates that the requested shower though ID doesn't exist.
      */
     @Override
     public ShowerThought deleteShowerThought(Long id) throws NotFoundException {
@@ -85,6 +85,10 @@ public class ShowerThoughtProvider implements ShowerThoughtGateway {
         return thought;
     }
 
+    /**
+     * This method is the implementation to read all the currently stored shower thoughts.
+     * @return A list of all the shower thoughts.
+     */
     @Override
     public List<ShowerThought> readAllShowerThought() {
         ArrayList<ShowerThought> completeList = new ArrayList<>();

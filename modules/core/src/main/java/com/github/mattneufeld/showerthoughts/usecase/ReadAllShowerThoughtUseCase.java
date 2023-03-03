@@ -8,22 +8,22 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class GetAllShowerThoughtUseCase {
+public class ReadAllShowerThoughtUseCase {
 
     private final ShowerThoughtGateway GATEWAY;
 
     /**
-     * This is the constructor for the GetShowerThought use case.
+     * This is the constructor for the ReadAllShowerThought use case.
      * @param gateway This is the implementation of the ShowerThoughtGateway interface to be provided by Spring Boot.
      */
     @Autowired
-    public GetAllShowerThoughtUseCase(ShowerThoughtGateway gateway){
+    public ReadAllShowerThoughtUseCase(ShowerThoughtGateway gateway){
         this.GATEWAY = gateway;
     }
 
     /**
-     * This method calls the implementation of getShowerThought defined by the gateway.
-     * @return The shower thought at the requested ID.
+     * This method calls the implementation of readAllShowerThought defined by the gateway.
+     * @return The list of shower thoughts provided by the gateway implementation.
      */
     public List<ShowerThought> execute() {
         return GATEWAY.readAllShowerThought();
