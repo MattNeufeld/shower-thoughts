@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/showerthought")
+@CrossOrigin
 public class ShowerThoughtController {
 
     private final ReadShowerThoughtUseCase readShowerThoughtUseCase;

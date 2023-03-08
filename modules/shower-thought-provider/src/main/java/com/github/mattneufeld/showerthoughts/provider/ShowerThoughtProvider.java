@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public class ShowerThoughtProvider implements ShowerThoughtGateway {
 
-    private final HashMap<Long, String> BIG_DATA_BASE = new HashMap<>();
+    private final HashMap<Long, String> THOUGHT_MAP = new HashMap<>();
     private long currentId = 0L;
 
     /**
@@ -23,11 +23,11 @@ public class ShowerThoughtProvider implements ShowerThoughtGateway {
      */
     @Override
     public ShowerThought createShowerThought(ShowerThought thought) {
-        while (BIG_DATA_BASE.containsKey(currentId)) {
+        while (THOUGHT_MAP.containsKey(currentId)) {
             currentId++;
         }
         thought.setId(currentId);
-        BIG_DATA_BASE.put(currentId++, thought.getThought());
+        THOUGHT_MAP.put(currentId++, thought.getThought());
         return thought;
     }
 
@@ -40,13 +40,13 @@ public class ShowerThoughtProvider implements ShowerThoughtGateway {
     @Override
     public ShowerThought readShowerThought(Long id) throws NotFoundException {
 
-        if (!BIG_DATA_BASE.containsKey(id)) {
+        if (!THOUGHT_MAP.containsKey(id)) {
             throw new NotFoundException("Requested ID does not exist.");
         }
 
         ShowerThought thought = new ShowerThought();
         thought.setId(id);
-        thought.setThought(BIG_DATA_BASE.get(id));
+        thought.setThought(THOUGHT_MAP.get(id));
         return thought;
     }
 
@@ -59,7 +59,7 @@ public class ShowerThoughtProvider implements ShowerThoughtGateway {
     @Override
     public ShowerThought updateShowerThought(Long id, ShowerThought thought){
 
-        BIG_DATA_BASE.put(id, thought.getThought());
+        THOUGHT_MAP.put(id, thought.getThought());
         thought.setId(id);
         return thought;
     }
@@ -73,15 +73,15 @@ public class ShowerThoughtProvider implements ShowerThoughtGateway {
     @Override
     public ShowerThought deleteShowerThought(Long id) throws NotFoundException {
 
-        if (!BIG_DATA_BASE.containsKey(id)) {
+        if (!THOUGHT_MAP.containsKey(id)) {
             throw new NotFoundException("Requested ID to be deleted does not exist.");
         }
 
         ShowerThought thought = new ShowerThought();
         thought.setId(id);
-        thought.setThought(BIG_DATA_BASE.get(id));
+        thought.setThought(THOUGHT_MAP.get(id));
 
-        BIG_DATA_BASE.remove(id);
+        THOUGHT_MAP.remove(id);
         return thought;
     }
 
@@ -92,7 +92,7 @@ public class ShowerThoughtProvider implements ShowerThoughtGateway {
     @Override
     public List<ShowerThought> readAllShowerThought() {
         ArrayList<ShowerThought> completeList = new ArrayList<>();
-        BIG_DATA_BASE.forEach((key,value) -> completeList.add(new ShowerThought(key, value)));
+        THOUGHT_MAP.forEach((key, value) -> completeList.add(new ShowerThought(key, value)));
         return completeList;
     }
 }
